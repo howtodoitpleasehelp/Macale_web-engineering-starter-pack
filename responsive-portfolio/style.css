@@ -1,0 +1,382 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Sawarabi+Mincho&display=swap');
+
+body {
+    @apply text-center;
+    font-family: 'Sawarabi Mincho', serif;
+}
+
+.hero {
+    @apply bg-cover bg-center text-white min-h-screen flex flex-col justify-center items-center;
+    background-image: url('images/sky.jpg');
+}
+
+.hero h1, .hero h4, .hero p {
+    animation: fadeIn 2s ease-in-out;
+    text-shadow: 0 0 10px #B28FA7, 0 0 20px #54161E, 0 0 30px #54161E;
+}
+
+.profile-container {
+    display: inline-block;
+    position: relative;
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+    border-radius: 50%;
+    top: -20px;
+    box-shadow:
+        inset 0 0 30px #f9d3e6,    
+        inset 10px 0 60px #b12a40,   
+        inset -10px 0 60px #c96e88,  
+        inset 10px 0 100px #b12a40,  
+        inset -10px 0 100px #c96e88, 
+        0 0 30px #f9d3e6,            
+        -5px 0 60px #b12a40,       
+        5px 0 60px #c96e88;        
+}
+
+.profile-pic img {
+    width: auto;
+    height: 100%;
+    margin-left: -50px;
+}
+
+/* Skills Section with Transparent Container */
+.skills {
+    @apply parallax px-8 sm:px-16 lg:px-40 relative text-white;
+    background-image: url('images/sky.jpg');
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    padding-bottom: 60px;
+}
+
+.skills-container {
+    @apply relative bg-opacity-20 bg-[#7e2b28] py-20 px-4 sm:px-8 lg:px-40 rounded-xl shadow-xl;
+    backdrop-filter: blur(10px);
+    background-size: cover;
+    padding: 50px;
+    margin-bottom: 0;
+}
+
+.skills h2, .skills p {
+    @apply text-center text-2xl font-bold text-[#eaeaea] transition-transform duration-300;
+    text-shadow: 0 0 15px #B28FA7, 0 0 25px #f35a7c, 0 0 35px #c9215e;
+}
+
+.skills h2:hover, .skills p:hover {
+    @apply text-[#f35a7c];
+    transform: scale(1.05);
+    text-shadow: 0 0 10px #f35a7c, 0 0 20px #c9215e, 0 0 30px #b12a40;
+}
+
+.skills-content {
+    margin-top: 20px;
+}
+
+.skills-content ul {
+    @apply grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4;
+}
+
+.skills-content li {
+    @apply bg-[#faa1b3] text-[#f3e5e5] font-bold text-center px-4 py-2 rounded-lg w-full sm:w-3/4 my-2 group transition-transform duration-300 hover:scale-110;
+    box-shadow: 
+        0px 15px 40px rgba(178, 143, 167, 0.35),  
+        0px 30px 70px rgba(243, 90, 124, 0.25),  
+        0px 40px 100px rgba(201, 33, 94, 0.15);
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.25);
+    transition: background-color 0.3s ease, color 0.3s ease, text-shadow 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 120px;
+    font-size: 0.85rem;
+    padding: 1rem;
+}
+
+.skills-content li:focus {
+    outline: 2px dashed #f35a7c;
+    outline-offset: 4px;
+}
+
+.skills-content li:hover {
+    @apply bg-[#f35a7c] text-[#eaeaea];
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
+}
+
+.skills-content li .content-wrapper {
+    @apply flex flex-col items-center gap-2;
+}
+
+.skills-content li .content-wrapper p {
+    @apply transition-colors duration-300;
+}
+
+.skills-content li:hover .content-wrapper p {
+    @apply text-white;
+}
+
+/* Projects Section with Transparent Container */
+.projects {
+    @apply parallax py-20 px-8 sm:px-16 lg:px-40 relative text-white;
+    background-image: url('images/sky.jpg');
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    padding-bottom: 60px;
+}
+
+.projects-container {
+    @apply relative bg-opacity-60 bg-[#7e2b28] py-20 px-4 sm:px-8 lg:px-40 rounded-xl shadow-xl;
+    backdrop-filter: blur(10px);
+    padding: 50px;
+    margin-top: 0;
+}
+
+.project-grid {
+    gap: 2rem;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+}
+
+.projects h2 {
+    @apply text-center text-2xl font-bold text-[#eaeaea] transition-transform duration-300;
+    text-shadow: 0 0 15px #B28FA7, 0 0 25px #f35a7c, 0 0 35px #c9215e;
+}
+
+.projects h2:hover {
+    @apply text-[#f35a7c];
+    transform: scale(1.05);
+    text-shadow: 0 0 10px #f35a7c, 0 0 20px #c9215e, 0 0 30px #b12a40;
+}
+
+.project-container {
+    position: relative;
+    width: 16rem; 
+    height: 10rem;
+    margin-top: 20px;
+    border: 2px solid transparent;
+    border-radius: 0.375rem;
+    transition: transform 0.3s, border-color 0.3s;
+    cursor: pointer;
+    overflow: visible;
+}
+
+.project-container:hover {
+    transform: scale(1.05);
+    border-color: #f35a7c;  
+}
+
+.project-container:focus-within {
+    border-color: #f35a7c; 
+    outline: 2px dashed #f35a7c;
+    outline-offset: 4px;
+}
+
+.project-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.project-container span {
+    position: absolute;
+    bottom: 0.5rem;
+    right: 0.5rem;
+    background-color: #f35a7c;
+    color: white;
+    font-size: 0.875rem;
+    padding: 0.5rem 1rem;
+    border-radius: 0.375rem;
+    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.2);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    z-index: 10;
+}
+
+.project-container:hover span {
+    opacity: 1; 
+    transform: translateY(-5px);
+}
+
+.project-container::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.25);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    border-radius: 0.375rem;
+    z-index: 5;
+}
+
+.project-container:hover::after {
+    opacity: 1;
+}
+
+.skills-container,
+.projects-container {
+    background-color: rgba(255, 182, 193, 0.01);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    padding: 3rem 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.25);
+    margin: 0 auto;
+    max-width: 1200px;
+}
+
+/* Contact Section */
+.contact-wrapper {
+    position: relative;
+    background-image: url('images/sky.jpg');
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    padding-bottom: 60px;
+}
+
+.contact {
+    padding-bottom: 60px;
+    margin-bottom: 50px;
+    position: relative;
+    z-index: 2;
+}
+
+.contact h2 {
+    text-shadow: 0 0 15px #B28FA7, 0 0 25px #f35a7c, 0 0 35px #c9215e;
+}
+
+form input,
+form textarea,
+form button {
+    @apply block w-4/5 mx-auto my-4 p-2 rounded-lg border border-[#f35a7c];
+}
+
+form button {
+    @apply block mx-auto;
+}
+
+/* Animation */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    60% {
+        opacity: 0.6;
+        transform: translateY(10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Shared parallax style */
+.hero, .skills, .projects, .contact-wrapper {
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+}
+
+/* Dark mode style */
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #0e1220;
+        color: #eaeaea;
+    }
+    
+    .hero {
+        background-image: url('images/dark.jpg');
+        background-size: cover;
+        background-attachment: fixed;
+    }
+    
+    .skills {
+        background-image: url('images/dark.jpg');
+        background-size: cover;
+        background-attachment: fixed;
+    }
+    
+    .projects {
+        background-image: url('images/dark.jpg');
+        background-size: cover;
+        background-attachment: fixed;
+    }
+    
+    .contact-wrapper {
+        background-image: url('images/dark.jpg');
+        background-size: cover;
+        background-attachment: fixed;
+    }
+    
+    h1, h2, h3, h4, p {
+        color: #eaeaea;
+    }
+    
+    h2, h3, h4 {
+        font-weight: bold;
+    }
+
+    .skills-container, .projects-container, .contact-info {
+        background-color: #40213300;
+        border-radius: 10px;
+        padding: 20px;
+    }
+    
+    .skills li, .projects .project-container, .contact input, .contact textarea, .contact button {
+        background-color: #693a4f;
+        border-color: #cc5981;
+        color: #eaeaea;
+        font-weight: bold;
+        padding: 1px;
+        border: 2px solid transparent;
+        border-radius: 0.375rem;
+        transition: all 0.3s ease;
+        overflow: visible;
+    }
+    
+    /* Hover effects */
+    .skills li:hover, .projects .project-container:hover {
+        background-color: #ac8ec2;
+    }
+    
+    /* Contact form input/textarea focus effect */
+    .contact input:focus, .contact textarea:focus {
+        border-color: #cc5981;
+        box-shadow: 0 0 0 2px #ac8ec2;
+    }
+    
+    /* Button hover effect */
+    .contact button:hover {
+        background-color: #9d4f72;
+    }
+    
+    /* Dark Mode Toggle Styles */
+    input[type="checkbox"]:checked + label {
+        background-color: #cc5981;
+    }
+    
+    /* Dark Mode button */
+    input[type="checkbox"]:checked + label .moon {
+        background-color: #eaeaea;
+    }
+    
+    /* Header Section */
+    header {
+        color: #eaeaea;
+    }
+    
+    /* Links */
+    a {
+        color: #ac8ec2;
+        text-decoration: none;
+    }
+    
+    a:hover {
+        color: #cc5981;
+    }
+}

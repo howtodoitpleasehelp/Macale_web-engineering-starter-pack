@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Macale | My Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Sawarabi+Mincho&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="text-center font-[Sawarabi Mincho]">
+    <!-- Header Section with Parallax Effect -->
+    <header class="hero parallax bg-cover bg-center text-white min-h-screen flex flex-col justify-center items-center">
+        <div class="profile-container">
+            <img src="images/kimono.jpg" alt="Profile Picture" class="profile-pic">
+        </div>
+        <h1 class="text-4xl font-bold">Hi, I am Shaira Joy Macale</h1>
+        <h4 class="text-xl">こんにちは、私はシャイラ・ジョイ・マカレです</h4>
+        <p class="text-xl">Creative Developer | Designer</p>
+    </header>
+    
+    <!-- Skills Section -->
+    <section class="skills parallax py-20 px-4 sm:px-8 md:px-16 lg:px-40 relative text-white">
+        <div class="skills-container">
+            <h2 class="text-center text-3xl font-bold text-[#eaeaea] mb-5 hover:scale-110 transition-all duration-300">SKILLS</h2>
+            <p class="text-center font-bold text-[#eaeaea] mb-8 hover:scale-110 transition-all duration-300">Technical Skills I Have</p>
+            <div class="flex flex-col items-center">
+                <div class="skills-content w-full">
+                    <ul class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 justify-center">
+                        <li class="bg-[#faa1b3] text-[#f3e5e5] font-bold text-center px-4 py-3 rounded-lg w-full group transition-transform duration-300 hover:scale-110">
+                            <p>Web Development (HTML, CSS, JavaScript, Tailwind CSS)</p>
+                        </li>
+                        <li class="bg-[#faa1b3] text-[#f3e5e5] font-bold text-center px-4 py-3 rounded-lg w-full group transition-transform duration-300 hover:scale-110">
+                            <p>UI/UX Design (Figma)</p>
+                        </li>
+                        <li class="bg-[#faa1b3] text-[#f3e5e5] font-bold text-center px-4 py-3 rounded-lg w-full group transition-transform duration-300 hover:scale-110">
+                            <p>Responsive & Interactive Design</p>
+                        </li>
+                        <li class="bg-[#faa1b3] text-[#f3e5e5] font-bold text-center px-4 py-3 rounded-lg w-full group transition-transform duration-300 hover:scale-110">
+                            <p>Version Control (Git, GitHub)</p>
+                        </li>
+                        <li class="bg-[#faa1b3] text-[#f3e5e5] font-bold text-center px-4 py-3 rounded-lg w-full group transition-transform duration-300 hover:scale-110">
+                            <p>Front-end Frameworks (React)</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>       
+    </section>
+
+    <!-- Projects Section -->
+    <section class="projects parallax py-20 px-4 sm:px-8 md:px-16 lg:px-40 relative text-white">
+        <div class="projects-container">
+            <h2 class="text-center text-3xl font-bold text-[#eaeaea] mb-8 hover:scale-110 transition-all duration-300">PROJECTS</h2>
+            <div class="project-grid flex justify-center gap-5 flex-wrap mt-5">
+                <!-- Project Cards -->
+                <div class="project-container w-full sm:w-64 relative rounded-lg overflow-hidden transition-transform duration-300 cursor-pointer">
+                    <img src="images/project 1.png" alt="Project 1" class="w-full h-40 object-cover">
+                    <span class="absolute bottom-2 right-2 bg-[#f35a7c] text-white text-sm px-2 py-1 rounded-lg shadow-md">2ndLife WebApp</span>
+                </div>
+                <div class="project-container w-full sm:w-64 relative rounded-lg overflow-hidden transition-transform duration-300 cursor-pointer">
+                    <img src="images/building.jpg" alt="Project 2" class="w-full h-40 object-cover">
+                    <span class="absolute bottom-2 right-2 bg-[#f35a7c] text-white text-sm px-2 py-1 rounded-lg shadow-md">Project 2</span>
+                </div>
+                <div class="project-container w-full sm:w-64 relative rounded-lg overflow-hidden transition-transform duration-300 cursor-pointer">
+                    <img src="images/sakura_tree.png" alt="Project 3" class="w-full h-40 object-cover">
+                    <span class="absolute bottom-2 right-2 bg-[#f35a7c] text-white text-sm px-2 py-1 rounded-lg shadow-md">Project 3</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-wrapper parallax bg-cover bg-center py-20 px-4">
+        <div class="contact bg-opacity-20 bg-[#fce7f3] rounded-xl shadow-lg py-10 px-6 max-w-xl mx-auto">
+            <div class="contact-info">
+                <h2 class="text-2xl font-semibold text-center text-[#eaeaea] mb-4">Contact Me</h2>
+                <form class="mt-4">
+                    <input class="block w-full my-2 p-3 rounded-lg border border-[#f35a7c] focus:ring-2 focus:ring-[#e9366e] placeholder-[#f35a7c] transition-all duration-300" type="text" placeholder="Your Name" required>
+                    <input class="block w-full my-2 p-3 rounded-lg border border-[#f35a7c] focus:ring-2 focus:ring-[#e9366e] placeholder-[#f35a7c] transition-all duration-300" type="email" placeholder="Your Email" required>
+                    <textarea class="block w-full my-2 p-3 rounded-lg border border-[#f35a7c] focus:ring-2 focus:ring-[#e9366e] placeholder-[#f35a7c] transition-all duration-300" placeholder="Your Message" required></textarea>
+                    <button class="bg-[#f35a7c] text-white w-full mt-3 px-4 py-2 rounded-lg shadow-md hover:bg-[#e9366e] focus:outline-none focus:ring-2 focus:ring-[#f35a7c] transition-all duration-300 cursor-pointer" type="submit">
+                        Send Message
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>
