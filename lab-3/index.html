@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>A* Search Pathfinder</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="wrapper">
+    <header>
+      <h1 class="title">A* Search Pathfinder</h1>
+      <p class="subtitle">Find the shortest path and reveal the hidden image!</p>
+    </header>
+
+    <main>
+      <section id="controls">
+        <div id="grid-controls">
+          <label for="grid-width">Grid Width:</label>
+          <input type="number" id="grid-width" value="30" min="5" max="50" />
+
+          <label for="grid-height">Grid Height:</label>
+          <input type="number" id="grid-height" value="15" min="5" max="30" />
+
+          <button type="button" class="btn secondary" onclick="applyGridSize()">Apply Size</button>
+        </div>
+
+        <div id="speed-control">
+          <label for="speed">Animation Speed:</label>
+          <select id="speed" onchange="setSpeed()">
+            <option value="30">Fast</option>
+            <option value="70" selected>Medium</option>
+            <option value="120">Slow</option>
+          </select>
+        </div>
+
+        <div class="placement-controls">
+          <button type="button" id="start-btn" class="btn" onclick="setMode('start')">Place Start</button>
+          <button type="button" id="end-btn" class="btn" onclick="setMode('end')">Place End</button>
+          <button type="button" id="wall-btn" class="btn" onclick="setMode('wall')">Draw Walls</button>
+          <button type="button" id="visualize-btn" class="btn primary" onclick="visualizeAstar()">Find Path</button>
+          <button type="button" id="clear-btn" class="btn secondary" onclick="resetGrid()">Clear Grid</button>
+          <button type="button" id="new-image-btn" class="btn accent" onclick="loadRandomImage()">New Image</button>
+        </div>
+
+        <div id="path-info" hidden>
+          <p>
+            <strong>Path length:</strong> <span id="path-length">0</span> steps |
+            <strong>Nodes explored:</strong> <span id="nodes-visited">0</span>
+          </p>
+        </div>
+      </section>
+
+      <div class="grid-container">
+        <section id="grid" aria-label="Pathfinding grid"></section>
+      </div>
+    </main>
+
+    <footer>
+      <p>Find the shortest path to reveal the hidden image! Draw walls to create obstacles and watch the algorithm explore.</p>
+    </footer>
+  </div>
+
+  <script src="pathfinder.js"></script>
+  <script src="cherry-blossoms.js"></script>
+</body>
+</html>

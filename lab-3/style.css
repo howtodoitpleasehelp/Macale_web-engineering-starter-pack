@@ -1,0 +1,532 @@
+/* === Root Variables for Easy Theming === */
+:root {
+    --primary: #ff85a2;
+    --primary-dark: #ff6b8b;
+    --secondary: #947b8c;
+    --success: #95d5b2;
+    --danger: #ff8ba7;
+    --background: #fff5f7;
+    --surface: #ffffff;
+    --text: #4a4a4a;
+    --border: #ffd1dc;
+    --cell-size: 25px;
+    --sakura-pink: #ffd1dc;
+    --sakura-dark: #ff85a2;
+    --sakura-light: #fff5f7;
+    --wall-color: #ff1493; /* Hot pink for walls */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Segoe UI", "Yu Gothic", "Hiragino Kaku Gothic ProN", sans-serif;
+    background: linear-gradient(135deg, var(--sakura-light), #fff);
+    color: var(--text);
+    min-height: 100vh;
+    line-height: 1.5;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Add cherry blossom petals animation */
+body::before,
+body::after,
+body span.petal {
+    display: none;
+}
+
+/* Cherry Blossom Background */
+body {
+    position: relative;
+    overflow-x: hidden;
+}
+
+@keyframes fall {
+    0% {
+        transform: translate3d(0, -10%, 0) rotate(0deg);
+    }
+    25% {
+        transform: translate3d(var(--sway-amount), 25vh, 0) rotate(calc(var(--end-rotate) * 0.25));
+    }
+    50% {
+        transform: translate3d(calc(var(--sway-amount) * -0.5), 50vh, 0) rotate(calc(var(--end-rotate) * 0.5));
+    }
+    75% {
+        transform: translate3d(calc(var(--sway-amount) * 0.25), 75vh, 0) rotate(calc(var(--end-rotate) * 0.75));
+    }
+    100% {
+        transform: translate3d(var(--end-x), 100vh, 0) rotate(var(--end-rotate));
+    }
+}
+
+@keyframes sway {
+    0% {
+        margin-left: 0;
+    }
+    25% {
+        margin-left: calc(var(--sway-amount) * 0.5);
+    }
+    50% {
+        margin-left: calc(var(--sway-amount) * -0.5);
+    }
+    75% {
+        margin-left: calc(var(--sway-amount) * 0.25);
+    }
+    100% {
+        margin-left: 0;
+    }
+}
+
+.petal-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.petal {
+    position: fixed;
+    top: -10%;
+    left: var(--start-x);
+    width: var(--size);
+    height: var(--size);
+    background-image: var(--petal-type);
+    background-size: 100% 100%;
+    opacity: var(--opacity);
+    will-change: transform;
+    animation: 
+        fall var(--fall-duration) linear infinite,
+        sway var(--sway-duration) ease-in-out infinite;
+    animation-delay: var(--delay);
+    filter: var(--color-filter);
+    transform-origin: center;
+}
+
+.wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    position: relative;
+    z-index: 1;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: var(--text);
+}
+
+.title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(120deg, var(--sakura-dark), var(--primary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.subtitle {
+    font-size: 1.1rem;
+    color: var(--secondary);
+}
+
+main {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 1rem;
+    padding: 2rem;
+    box-shadow: 0 4px 20px rgba(255, 133, 162, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 209, 220, 0.3);
+}
+
+#controls {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    align-items: center;
+    text-align: center;
+}
+
+#grid-controls, #speed-control {
+    background: rgba(255, 255, 255, 0.8);
+    padding: 1rem 1.5rem;
+    border-radius: 1rem;
+    box-shadow: 0 2px 10px rgba(255, 133, 162, 0.1);
+    border: 1px solid rgba(255, 209, 220, 0.5);
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    backdrop-filter: blur(5px);
+}
+
+.placement-controls {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.btn {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 0.75rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: var(--surface);
+    color: var(--text);
+    border: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 209, 220, 0.4) 0%, transparent 50%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.btn:hover::after {
+    opacity: 1;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 133, 162, 0.2);
+}
+
+.btn.selected {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+}
+
+.btn.primary {
+    background: var(--primary);
+    color: white;
+    border: none;
+}
+
+.btn.primary:hover {
+    background: var(--primary-dark);
+}
+
+.btn.secondary {
+    background: var(--secondary);
+    color: white;
+    border: none;
+}
+
+.btn.accent {
+    background: var(--sakura-dark);
+    color: white;
+    border: none;
+}
+
+.btn.accent:hover {
+    background: var(--primary-dark);
+}
+
+.grid-container {
+    overflow: hidden;
+    max-width: 100%;
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 1rem;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    border: 1px solid rgba(255, 209, 220, 0.5);
+    box-shadow: 0 4px 20px rgba(255, 133, 162, 0.1);
+}
+
+#grid {
+    display: grid;
+    gap: 1px;
+    background: var(--border);
+    padding: 1px;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 2px 10px rgba(255, 133, 162, 0.1);
+}
+
+.node {
+    width: var(--cell-size);
+    height: var(--cell-size);
+    min-width: var(--cell-size);
+    min-height: var(--cell-size);
+    background: var(--surface);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.node::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(4px);
+    transition: all 0.3s ease;
+}
+
+.node.visited::before,
+.node.path::before,
+.node.start::before,
+.node.end::before {
+    opacity: 0;
+}
+
+.node.wall {
+    background: var(--wall-color) !important;
+    box-shadow: 0 0 10px rgba(255, 20, 147, 0.3);
+    border-radius: 2px;
+}
+
+.node.wall::before {
+    display: none;
+}
+
+.node.start {
+    background: var(--success);
+}
+
+.node.end {
+    background: var(--danger);
+}
+
+.node.visited {
+    animation: revealNode 0.5s ease forwards;
+}
+
+.node.path {
+    animation: revealPath 0.5s ease forwards;
+}
+
+@keyframes revealNode {
+    0% {
+        transform: scale(0.3);
+        filter: brightness(0.5);
+    }
+    100% {
+        transform: scale(1);
+        filter: brightness(1);
+    }
+}
+
+@keyframes revealPath {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+        box-shadow: 0 0 20px var(--sakura-pink);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+#background-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.2;
+    pointer-events: none;
+    z-index: 0;
+}
+
+#path-info {
+    background: rgba(255, 255, 255, 0.8);
+    padding: 1rem;
+    border-radius: 1rem;
+    text-align: center;
+    font-size: 0.9rem;
+    border: 1px solid rgba(255, 209, 220, 0.5);
+    box-shadow: 0 2px 10px rgba(255, 133, 162, 0.1);
+}
+
+footer {
+    text-align: center;
+    color: var(--secondary);
+    margin-top: 2rem;
+    font-size: 0.9rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 1rem;
+    border: 1px solid rgba(255, 209, 220, 0.5);
+}
+
+@media (max-width: 768px) {
+    :root {
+        --cell-size: 20px;
+    }
+
+    .wrapper {
+        padding: 1rem;
+    }
+    
+    main {
+        padding: 1rem;
+    }
+    
+    .title {
+        font-size: 1.75rem;
+    }
+    
+    #grid-controls, #speed-control {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        padding: 1rem;
+    }
+    
+    input[type="number"], select {
+        width: 200px;
+        max-width: 100%;
+    }
+    
+    .placement-controls {
+        flex-direction: column;
+        width: 100%;
+        max-width: 300px;
+        gap: 0.5rem;
+    }
+    
+    .btn {
+        width: 100%;
+    }
+
+    .grid-container {
+        padding: 0.5rem;
+    }
+}
+
+/* Add styles for custom scrollbar */
+.grid-container::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+.grid-container::-webkit-scrollbar-track {
+    background: var(--background);
+    border-radius: 4px;
+}
+
+.grid-container::-webkit-scrollbar-thumb {
+    background: var(--secondary);
+    border-radius: 4px;
+}
+
+.grid-container::-webkit-scrollbar-thumb:hover {
+    background: var(--primary);
+}
+
+/* Add some spacing between control groups */
+#grid-controls > *, #speed-control > * {
+    margin: 0.25rem;
+}
+
+/* Make the labels more visible */
+label {
+    font-weight: 500;
+    color: var(--text);
+    min-width: 120px;
+    text-align: right;
+}
+
+/* Improve input and select styling */
+input[type="number"], select {
+    padding: 0.5rem;
+    border: 2px solid var(--border);
+    border-radius: 0.75rem;
+    font-size: 0.9rem;
+    width: 100px;
+    text-align: center;
+    transition: all 0.2s ease;
+    background: rgba(255, 255, 255, 0.9);
+}
+
+input[type="number"]:focus, select:focus {
+    border-color: var(--primary);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(255, 133, 162, 0.2);
+}
+
+/* Add a container for the speed control to match grid controls */
+#speed-control {
+    background: var(--surface);
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.75rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Add the same style to grid controls */
+#grid-controls {
+    background: var(--surface);
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.75rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Add this after your existing styles */
+.wrapper::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 50% 50%, 
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 209, 220, 0.1) 100%);
+    pointer-events: none;
+    z-index: -1;
+}
+
+/* Add reveal effect class */
+.reveal-image .node::before {
+    opacity: 0 !important;
+    transition: opacity 1s ease-in-out;
+}
+
+/* Enhance visited and path nodes */
+.node.visited::before {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.node.path::before {
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+  
